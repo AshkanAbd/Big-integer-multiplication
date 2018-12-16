@@ -46,7 +46,6 @@ int main() {
                     } else {
                         *next = (char) (i4 + '0');
                     }
-                    int mn = 0;
                 }
             }
             count++;
