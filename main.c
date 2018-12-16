@@ -61,6 +61,7 @@ int main() {
             continue;
         printf("%c", *(res + i));
     }
+    printf("\n");
 }
 
 char *to_char(int num) {
