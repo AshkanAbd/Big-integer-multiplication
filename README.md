@@ -16,4 +16,3 @@ gcc version >= 5
 
     gcc -o Big-Integer-Multiplication main.c -lm
     ./Big-Integer-Multiplication
-    
