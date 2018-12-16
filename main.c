@@ -6,10 +6,12 @@
 
 char *to_char(int num);
 
+int get_length(const char *num);
+
 int main() {
-    int max_len;
+    unsigned int max_len;
     printf("Enter max number length : ");
-    scanf("%d", &max_len);
+    scanf("%u", &max_len);
     char num1[max_len];
     memset(&num1, 0, max_len * sizeof(char));
     char num2[max_len];
@@ -20,18 +22,14 @@ int main() {
     scanf("%s", &num1);
     printf("Enter second number : ");
     scanf("%s", &num2);
-    int i = max_len - 1, j, count, k, l, m;
+    int len1 = get_length(num1);
+    int len2 = get_length(num2);
+    int i = len1 - 1, j, count, k, l, m;
     for (m = 0; i >= 0; i--, m++) {
-        char c1 = *(num1 + i);
-        if (c1 == 0)
-            continue;
         count = m;
-        int i1 = c1 - '0';
-        for (j = max_len - 1; j >= 0; j--) {
-            char c2 = *(num2 + j);
-            if (c2 == 0)
-                continue;
-            int i2 = c2 - '0';
+        int i1 = *(num1 + i) - '0';
+        for (j = len2 - 1; j >= 0; j--) {
+            int i2 = *(num2 + j) - '0';
             int i3 = i1 * i2;
             if (i3 != 0) {
                 char *tmp = to_char(i2 * i1);
@@ -56,7 +54,7 @@ int main() {
         }
     }
     printf("result = ");
-    for (i = max_len * max_len; i >= 0; i--) {
+    for (i = len1 * len2; i >= 0; i--) {
         if (*(res + i) == 0)
             continue;
         printf("%c", *(res + i));
@@ -73,4 +71,12 @@ char *to_char(int num) {
         num = num % (int) pow(10, i);
     }
     return tmp;
+}
+
+int get_length(const char *num) {
+    int i = 0;
+    while (1) {
+        if (*(num + i++) == 0) break;
+    }
+    return i - 1;
 }
