@@ -2,26 +2,32 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
+#include <strings.h>
 
 char *to_char(int num);
 
 int main() {
-    char num1[100];
-    memset(&num1, 0, 100 * sizeof(char));
-    char num2[100];
-    memset(&num2, 0, 100 * sizeof(char));
-    char *res = (char *) malloc(100 * 100 * sizeof(char));
-    memset(res, 0, 100 * 100 * sizeof(char));
+    int max_len;
+    printf("Enter max number length : ");
+    scanf("%d", &max_len);
+    char num1[max_len];
+    memset(&num1, 0, max_len * sizeof(char));
+    char num2[max_len];
+    memset(&num2, 0, max_len * sizeof(char));
+    char *res = (char *) malloc(max_len * max_len * sizeof(char));
+    memset(res, 0, max_len * max_len * sizeof(char));
+    printf("Enter first number : ");
     scanf("%s", &num1);
+    printf("Enter second number : ");
     scanf("%s", &num2);
-    int i = 99, j, count, k, l, m;
+    int i = max_len - 1, j, count, k, l, m;
     for (m = 0; i >= 0; i--, m++) {
         char c1 = *(num1 + i);
         if (c1 == 0)
             continue;
         count = m;
         int i1 = c1 - '0';
-        for (j = 99; j >= 0; j--) {
+        for (j = max_len - 1; j >= 0; j--) {
             char c2 = *(num2 + j);
             if (c2 == 0)
                 continue;
@@ -43,13 +49,14 @@ int main() {
                     } else {
                         *next = (char) (i4 + '0');
                     }
+                    int mn = 0;
                 }
             }
             count++;
         }
     }
     printf("result = ");
-    for (i = 100 * 100; i >= 0; i--) {
+    for (i = max_len * max_len; i >= 0; i--) {
         if (*(res + i) == 0)
             continue;
         printf("%c", *(res + i));
