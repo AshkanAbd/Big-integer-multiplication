@@ -25,8 +25,7 @@ int main() {
     memcpy(num2, num2_tmp, len2 * sizeof(char));
     free(num1_tmp);
     free(num2_tmp);
-    char *res = malloc((len1 + len2) * sizeof(char));
-    memset(res, 0, (len1 + len2) * sizeof(char));
+    char *res = calloc((len1 + len2) , sizeof(char));
     int i = len1 - 1, j, count, k, l, m;
     for (m = 0; i >= 0; i--, m++) {
         count = m;
@@ -60,8 +59,7 @@ int main() {
             count++;
         }
     }
-    char *final_res = malloc((len1 + len2) * sizeof(char));
-    memset(final_res, 0, (len1 + len2) * sizeof(char));
+    char *final_res = calloc((len1 + len2) , sizeof(char));
     for (i = (len1 + len2) - 1, j = 0; i >= 0;) {
         char tmp = *(res + i--);
         if (tmp == 0)
