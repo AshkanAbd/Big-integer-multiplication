@@ -67,12 +67,16 @@ int main() {
     free(num1);
     free(num2);
     printf("result = ");
+    char printed = 0;
     for (i = (len1 + len2) - 1; i >= 0;) {
         char tmp = *(res + i--);
         if (tmp == 0)
             continue;
         printf("%c", tmp);
+        printed = 1;
     }
+    if (!printed)
+        printf("0");
     printf("\n");
 }
 
