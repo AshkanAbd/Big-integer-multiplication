@@ -40,7 +40,7 @@ int main() {
             char i2 = *(num2 + j--) - '0';
             char i3 = i1 * i2;
             if (i3 != 0) {
-                char *tmp = to_char(i2 * i1);
+                char *tmp = to_char(i3);
                 for (k = (int) log10(i3), l = 0; k >= 0;) {
                     char *next = res + count + l++;
                     char *next_plus = next + 1;
@@ -82,10 +82,9 @@ int main() {
 
 int leading_zero(const char *num, int size) {
     int i = 0, result = 0;
-    for (; i < size;) {
+    for (; i < size; result++) {
         if (*(num + i++) != '0')
             break;
-        result++;
     }
     return result;
 }
